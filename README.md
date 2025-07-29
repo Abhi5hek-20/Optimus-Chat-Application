@@ -1,6 +1,32 @@
-# Chat Application
+# Optimus Chat Application
 
-A modern real-time chat application built with React, Node.js, Express, MongoDB, and Stream Chat.
+<div align="center">
+  <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2339&q=80" alt="Chat Application Banner" width="800"/>
+  
+  <h3>🚀 A modern real-time chat application built with React, Node.js, Express, MongoDB, and Stream Chat.</h3>
+  
+  <p>
+    <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white"/>
+    <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Stream_Chat-005FFF?style=for-the-badge&logo=stream&logoColor=white"/>
+    <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
+  </p>
+  
+  <p>
+    <a href="https://github.com/Abhi5hek-20/Optimus-Chat-Application/stargazers">
+      <img src="https://img.shields.io/github/stars/Abhi5hek-20/Optimus-Chat-Application?style=social"/>
+    </a>
+    <a href="https://github.com/Abhi5hek-20/Optimus-Chat-Application/network/members">
+      <img src="https://img.shields.io/github/forks/Abhi5hek-20/Optimus-Chat-Application?style=social"/>
+    </a>
+    <a href="https://github.com/Abhi5hek-20/Optimus-Chat-Application/issues">
+      <img src="https://img.shields.io/github/issues/Abhi5hek-20/Optimus-Chat-Application?style=social"/>
+    </a>
+  </p>
+</div>
+
+---
 
 ## Features
 
