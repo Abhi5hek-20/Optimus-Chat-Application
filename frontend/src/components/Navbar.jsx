@@ -3,6 +3,8 @@ import useAuthUser from "../hooks/useAuthUser";
 import { BellIcon, LogOutIcon, ShipWheelIcon } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 import useLogout from "../hooks/useLogout";
+import { useQuery } from "@tanstack/react-query";
+import { getFriendRequests } from "../lib/api.js";
 
 const Navbar = () => {
   const { authUser } = useAuthUser();
@@ -10,6 +12,15 @@ const Navbar = () => {
   const isChatPage = location.pathname?.startsWith("/chat");
 
   const { logoutMutation } = useLogout();
+
+  // Get friend requests to show notification indicator
+  const { data: friendRequests } = useQuery({
+    queryKey: ["friendRequests"],
+    queryFn: getFriendRequests,
+  });
+
+  const incomingRequests = friendRequests?.incomingReqs || [];
+  const hasNotifications = incomingRequests.length > 0;
 
   return (
       <nav className="bg-base-200 border-b border-base-300 sticky top-0 z-30 h-18 flex items-center">
@@ -33,8 +44,11 @@ const Navbar = () => {
               Home
             </Link>
             <Link to={"/notifications"}>
-              <button className="btn btn-ghost btn-circle hover:bg-base-300">
+              <button className="btn btn-ghost btn-circle hover:bg-base-300 relative">
                 <BellIcon className="h-6 w-6 text-base-content opacity-70" />
+                {hasNotifications && (
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
+                )}
               </button>
             </Link>
 

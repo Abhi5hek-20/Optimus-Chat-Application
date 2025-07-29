@@ -17,6 +17,7 @@ import NoFriendsFound from "../components/NoFriendsFound";
 const HomePage = () => {
   const queryClient = useQueryClient();
   const [outgoingRequestsIds, setOutgoingRequestsIds] = useState(new Set());
+  const [pendingRequestIds, setPendingRequestIds] = useState(new Set());
 
   const { data: friends = [], isLoading: loadingFriends } = useQuery({
     queryKey: ["friends"],
@@ -35,7 +36,24 @@ const HomePage = () => {
 
   const { mutate: sendRequestMutation, isPending } = useMutation({
     mutationFn: sendFriendRequest,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["outgoingFriendReqs"] }),
+    onMutate: (userId) => {
+      setPendingRequestIds((prev) => new Set([...prev, userId]));
+    },
+    onSuccess: (data, userId) => {
+      queryClient.invalidateQueries({ queryKey: ["outgoingFriendReqs"] });
+      setPendingRequestIds((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete(userId);
+        return newSet;
+      });
+    },
+    onError: (error, userId) => {
+      setPendingRequestIds((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete(userId);
+        return newSet;
+      });
+    },
   });
 
   useEffect(() => {
@@ -100,6 +118,7 @@ const HomePage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {recommendedUsers.map((user) => {
                 const hasRequestBeenSent = outgoingRequestsIds.has(user._id);
+                const isUserPending = pendingRequestIds.has(user._id);
 
                 return (
                   <div
@@ -138,9 +157,14 @@ const HomePage = () => {
                           hasRequestBeenSent ? "btn-disabled" : "btn-primary"
                         } `}
                         onClick={() => sendRequestMutation(user._id)}
-                        disabled={hasRequestBeenSent || isPending}
+                        disabled={hasRequestBeenSent || isUserPending}
                       >
-                        {hasRequestBeenSent ? (
+                        {isUserPending ? (
+                          <>
+                            <span className="loading loading-spinner loading-xs mr-2"></span>
+                            Sending...
+                          </>
+                        ) : hasRequestBeenSent ? (
                           <>
                             <CheckCircleIcon className="size-4 mr-2" />
                             Request Sent
