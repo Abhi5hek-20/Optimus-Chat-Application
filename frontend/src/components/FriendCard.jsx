@@ -34,6 +34,24 @@ export function getLanguageFlag(language) {
 
   const langLower = language.toLowerCase();
 
+  // Map common languages to country codes
+  const languageToCountry = {
+    'english': 'us',
+    'spanish': 'es',
+    'french': 'fr',
+    'german': 'de',
+    'italian': 'it',
+    'portuguese': 'pt',
+    'chinese': 'cn',
+    'japanese': 'jp',
+    'korean': 'kr',
+    'russian': 'ru',
+    'arabic': 'sa',
+    'hindi': 'in',
+  };
+
+  const countryCode = languageToCountry[langLower];
+
   if (countryCode) {
     return (
       <img

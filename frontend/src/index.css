@@ -1,7 +1,6 @@
-@import "tailwindcss";
-@plugin "daisyui"{
-  themes: all;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .str-chat__channel {
   display: flex;

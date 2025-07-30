@@ -7,10 +7,10 @@ function CallButton({ handleVideoCall }) {
   return (
     <button 
       onClick={handleVideoCall} 
-      className="w-30 h-8 bg-primary hover:bg-primary/80 text-primary-content rounded-full flex items-center justify-center transition-all duration-200 shadow-md ml-2"
+      className="w-32 h-9 bg-primary hover:bg-primary/80 text-primary-content rounded-full flex items-center justify-center transition-all duration-200 shadow-md ml"
       title="Start Video Call"
     >
-      <VideoIcon className="w-4 h-4 mr-2"/> Video Call
+      <VideoIcon className="w-5 h-5 mr-2"/> Video Call
     </button>
   );
 }

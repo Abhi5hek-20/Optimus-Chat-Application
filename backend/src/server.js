@@ -7,9 +7,13 @@ import { connectDB } from './lib/db.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';  // to enable CORS (Cross-Origin Resource Sharing)
 dotenv.config();  // to read .env file we need to use config method
+import path from 'path';  // to work with file and directory paths
+
 
 const app = express();  // create an instance of express
 const PORT = process.env.PORT
+
+const __dirname = path.resolve();
 
 app.use(cors({
     origin: process.env.FRONTEND_URL, 
@@ -24,6 +28,14 @@ app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 
 app.use("/api/chat", chatRoutes);
+
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+    });
+}
 
 
 

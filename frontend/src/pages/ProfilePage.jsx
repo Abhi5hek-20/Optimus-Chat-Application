@@ -93,18 +93,6 @@ const ProfilePage = () => {
                     }}
                   />
                 </div>
-                
-                {/* Generate New Avatar Button */}
-                <button
-                  className={`btn btn-circle btn-primary absolute -bottom-2 -right-2 ${
-                    isGeneratingAvatar ? "loading" : ""
-                  }`}
-                  onClick={generateRandomAvatar}
-                  disabled={isGeneratingAvatar}
-                  title="Generate random avatar"
-                >
-                  {!isGeneratingAvatar && <RefreshCw className="w-4 h-4" />}
-                </button>
               </div>
               
               <button

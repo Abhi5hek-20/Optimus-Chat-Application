@@ -164,7 +164,7 @@ const ChatPage = () => {
   ];
 
   return (
-    <div className="h-[calc(100vh-72px)] w-full max-w-full overflow-hidden bg-white">
+    <div className="h-[calc(100vh-80px)] w-full max-w-full overflow-hidden bg-base-100">
       <Chat client={chatClient}>
         <Channel channel={channel}>
           <div className="w-full h-full max-w-full flex flex-col relative overflow-hidden">

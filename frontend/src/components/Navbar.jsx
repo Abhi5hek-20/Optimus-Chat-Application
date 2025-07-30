@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-base-200 border-b border-base-300 sticky top-0 z-30 h-18 flex items-center">
+      <nav className="bg-base-200 border-b border-base-300 sticky top-0 z-30 h-20 flex items-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center w-full">
             {/* LOGO - ONLY IN THE CHAT PAGE */}
@@ -135,7 +135,7 @@ const Navbar = () => {
           ></div>
           
           {/* Menu Content */}
-          <div className="fixed top-18 right-4 bg-base-200 border border-base-300 rounded-lg shadow-lg z-50 w-64 md:hidden">
+          <div className="fixed top-20 right-4 bg-base-200 border border-base-300 rounded-lg shadow-lg z-50 w-64 md:hidden">
             <div className="py-2">
               {/* Home */}
               <Link 
