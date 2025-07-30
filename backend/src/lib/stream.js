@@ -1,6 +1,5 @@
 import { StreamChat } from "stream-chat";
 import "dotenv/config";
-import { User } from "lucide-react";
 
 
 const apiKey = process.env.STREAM_API_KEY;
