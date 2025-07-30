@@ -1,7 +1,7 @@
 # Optimus Chat Application
 
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2339&q=80" alt="Chat Application Banner" width="800"/>
+  <img src="frontend/public/home.png" alt="Chat Application Banner" width="800"/>
   
   <h3>🚀 A modern real-time chat application built with React, Node.js, Express, MongoDB, and Stream Chat.</h3>
   
