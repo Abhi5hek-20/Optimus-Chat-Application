@@ -5,7 +5,8 @@ import { getRecommendedUsers,
          sendFriendRequest,
          acceptFriendRequest,
          getFriendRequests,
-         getOutgoingFriendRequests
+         getOutgoingFriendRequests,
+         updateProfile
 } from '../controllers/user.controller.js';
 
 const router = express.Router();
@@ -23,6 +24,8 @@ router.put("/friend-request/:id/accept", acceptFriendRequest);
 router.get("/friend-requests/", getFriendRequests);
 
 router.get("/outgoing-friend-requests/", getOutgoingFriendRequests);
+
+router.put("/profile", updateProfile);
 
 
 export default router;

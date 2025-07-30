@@ -158,3 +158,33 @@ export async function getOutgoingFriendRequests(req, res) {
         return res.status(500).json({ message: "Internal server error" });
     }
 }
+
+export async function updateProfile(req, res) {
+    try {
+        const { profilePic, bio } = req.body;
+        const userId = req.user.id;
+
+        const updateData = {};
+        if (profilePic !== undefined) updateData.profilePic = profilePic;
+        if (bio !== undefined) updateData.bio = bio;
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            updateData,
+            { new: true, select: "-Password" }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({
+            success: true,
+            user: updatedUser
+        });
+
+    } catch (error) {
+        console.error("Error updating profile:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+}

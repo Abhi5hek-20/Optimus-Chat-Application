@@ -21,7 +21,7 @@ const FriendsPage = () => {
               Your Friends
             </h1>
             <p className="text-base-content/70 mt-2">
-              Connect and chat with your language learning partners
+              Connect and chat with your learning partners
             </p>
           </div>
           
@@ -61,25 +61,6 @@ const FriendsPage = () => {
                 </div>
               </div>
               
-              <div className="card bg-base-200 shadow-sm">
-                <div className="card-body text-center">
-                  <h3 className="font-semibold text-lg">Languages Practiced</h3>
-                  <p className="text-2xl font-bold text-secondary">
-                    {new Set(friends.map(f => f.nativeLanguage)).size}
-                  </p>
-                  <p className="text-sm opacity-70">Different native languages</p>
-                </div>
-              </div>
-              
-              <div className="card bg-base-200 shadow-sm">
-                <div className="card-body text-center">
-                  <h3 className="font-semibold text-lg">Learning Together</h3>
-                  <p className="text-2xl font-bold text-accent">
-                    {new Set(friends.map(f => f.learningLanguage)).size}
-                  </p>
-                  <p className="text-sm opacity-70">Languages being learned</p>
-                </div>
-              </div>
             </div>
           </>
         )}

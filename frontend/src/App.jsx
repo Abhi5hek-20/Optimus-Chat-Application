@@ -5,6 +5,7 @@ import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import NotificationsPage from "./pages/NotificationsPage.jsx";
 import FriendsPage from "./pages/FriendsPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 import CallPage from "./pages/CallPage.jsx";
 import ChatPage from "./pages/ChatPage.jsx";
 
@@ -68,6 +69,18 @@ const App = () => {
             isAuthenticated ? (
               <Layout showSidebar={true}>
                 <FriendsPage />
+              </Layout>
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            isAuthenticated ? (
+              <Layout showSidebar={true}>
+                <ProfilePage />
               </Layout>
             ) : (
               <Navigate to="/login" />
