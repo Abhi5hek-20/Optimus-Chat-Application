@@ -18,7 +18,7 @@ const CustomChannelHeader = ({ handleVideoCall }) => {
   const avatar = otherMember?.user?.image;
 
   return (
-    <div className="str-chat__channel-header">
+    <div className="str-chat__channel-header ">
       <div className="str-chat__channel-header-info">
         {avatar && (
           <img 
@@ -28,10 +28,10 @@ const CustomChannelHeader = ({ handleVideoCall }) => {
           />
         )}
         <div>
-          <div className="str-chat__channel-header__title">
+          <div className="str-chat__channel-header__title ">
             {displayName}
           </div>
-          <div className="str-chat__channel-header__subtitle">
+          <div className="str-chat__channel-header__subtitle ">
             {memberCount} members, {onlineCount} online
           </div>
         </div>

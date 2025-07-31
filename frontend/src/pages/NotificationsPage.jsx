@@ -23,7 +23,7 @@ const NotificationsPage = () => {
   const acceptedRequests = friendRequests?.acceptedReqs || [];
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8">
+    <div className="p-4 sm:p-6 lg:p-8 min-h-screen bg-white dark:bg-base-100">
       <div className="container mx-auto max-w-4xl space-y-8">
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-6">Notifications</h1>
 
@@ -45,13 +45,15 @@ const NotificationsPage = () => {
                   {incomingRequests.map((request) => (
                     <div
                       key={request._id}
-                      className="card bg-base-200 shadow-sm hover:shadow-md transition-shadow"
+                      className="card bg-white dark:bg-base-200 shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-base-300"
                     >
                       <div className="card-body p-4">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
-                            <div className="avatar w-14 h-14 rounded-full bg-base-300">
-                              <img src={request.sender.profilePic} alt={request.sender.Fullname} />
+                            <div className="avatar">
+                              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-base-300 overflow-hidden">
+                                <img src={request.sender.profilePic} alt={request.sender.Fullname} className="w-full h-full object-cover" />
+                              </div>
                             </div>
                             <div>
                               <h3 className="font-semibold">{request.sender.Fullname}</h3>
@@ -60,7 +62,7 @@ const NotificationsPage = () => {
                           </div>
 
                           <button
-                            className="btn btn-primary btn-sm"
+                            className="btn btn-primary btn-sm whitespace-nowrap"
                             onClick={() => acceptRequestMutation(request._id)}
                             disabled={isPending}
                           >
@@ -84,28 +86,33 @@ const NotificationsPage = () => {
 
                 <div className="space-y-3">
                   {acceptedRequests.map((notification) => (
-                    <div key={notification._id} className="card bg-base-200 shadow-sm">
+                    <div key={notification._id} className="card bg-white dark:bg-base-200 shadow-sm border border-gray-200 dark:border-base-300">
                       <div className="card-body p-4">
                         <div className="flex items-start gap-3">
-                          <div className="avatar mt-1 size-10 rounded-full">
-                            <img
-                              src={notification.recipient.profilePic}
-                              alt={notification.recipient.Fullname}
-                            />
+                          <div className="avatar mt-1">
+                            <div className="w-10 h-10 rounded-full bg-base-300 overflow-hidden">
+                              <img
+                                src={notification.sender.profilePic}
+                                alt={notification.sender.Fullname}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
                           </div>
                           <div className="flex-1">
-                            <h3 className="font-semibold">{notification.recipient.Fullname}</h3>
+                            <h3 className="font-semibold">{notification.sender.Fullname}</h3>
                             <p className="text-sm my-1">
-                              {notification.recipient.Fullname} accepted your friend request
+                              {notification.sender.Fullname} accepted your friend request
                             </p>
                             <p className="text-xs flex items-center opacity-70">
                               <ClockIcon className="h-3 w-3 mr-1" />
                               Recently
                             </p>
                           </div>
-                          <div className="badge badge-success">
-                            <MessageSquareIcon className="h-3 w-3 mr-1" />
-                            New Friend
+                          <div className="flex-shrink-0">
+                            <div className="badge badge-success text-xs">
+                              <MessageSquareIcon className="h-3 w-3 mr-1" />
+                              New Friend
+                            </div>
                           </div>
                         </div>
                       </div>

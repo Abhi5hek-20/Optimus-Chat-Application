@@ -128,7 +128,7 @@ export async function getFriendRequests(req, res) {
         const acceptedReqs = await FriendRequest.find({ 
             recipient: req.user.id, 
             status: "accepted" 
-        }).populate("recipient", "Fullname profilePic");
+        }).populate("sender", "Fullname profilePic");
 
         console.log("Found incoming requests:", incomingReqs.length);
         console.log("Found accepted requests:", acceptedReqs.length);

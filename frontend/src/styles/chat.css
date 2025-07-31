@@ -622,53 +622,6 @@ button[title*="attach" i]:not([title*="send" i]) {
   background: hsl(var(--bc) / 0.3);
 }
 
-/* Hide Poll and Location attachment options */
-.str-chat__attachment-picker-option[data-testid="poll-option"],
-.str-chat__attachment-picker-option[data-testid="location-option"],
-.str-chat__attachment-picker-item:has([data-testid="poll-option"]),
-.str-chat__attachment-picker-item:has([data-testid="location-option"]) {
-  display: none !important;
-}
-
-/* Alternative selectors for poll and location */
-.str-chat__attachment-picker .str-chat__attachment-picker-item:nth-child(2),
-.str-chat__attachment-picker .str-chat__attachment-picker-item:nth-child(3) {
-  display: none !important;
-}
-
-/* More specific selectors for attachment options */
-.str-chat__attachment-picker-option:contains("Poll"),
-.str-chat__attachment-picker-option:contains("Location") {
-  display: none !important;
-}
-
-/* Hide by icon classes if they exist */
-.str-chat__attachment-picker-option .str-chat__attachment-picker-option__icon[class*="poll"],
-.str-chat__attachment-picker-option .str-chat__attachment-picker-option__icon[class*="location"] {
-  display: none !important;
-}
-
-/* Hide the entire picker item containing poll or location */
-.str-chat__attachment-picker-option:has(.str-chat__attachment-picker-option__text:contains("Poll")),
-.str-chat__attachment-picker-option:has(.str-chat__attachment-picker-option__text:contains("Location")) {
-  display: none !important;
-}
-
-/* Target by button content */
-button[aria-label*="Poll" i],
-button[aria-label*="Location" i],
-button[title*="Poll" i],
-button[title*="Location" i] {
-  display: none !important;
-}
-
-/* Target attachment menu items */
-[role="menuitem"]:has([data-testid*="poll"]),
-[role="menuitem"]:has([data-testid*="location"]),
-li:has([aria-label*="Poll" i]),
-li:has([aria-label*="Location" i]) {
-  display: none !important;
-}
 
 /* Ensure proper height distribution */
 .str-chat__window {
@@ -694,3 +647,28 @@ li:has([aria-label*="Location" i]) {
   background: hsl(var(--b1)) !important;
   min-width: 350px !important;
 }
+
+.str-chat__message--pinned .str-chat__message-simple__content {
+  background: hsl(var(--warning) / 0.05) !important;
+  border: 1px solid hsl(var(--warning) / 0.3) !important;
+}
+
+/* Hide the separate pinned messages container */
+.str-chat__pinned-message-list {
+  display: none !important;
+}
+
+.str-chat__pinned-message {
+  display: none !important;
+}
+
+/* Hide only the reply/arrow button to prevent thread window from opening */
+.str-chat__message-actions-box button[aria-label*="Reply" i],
+.str-chat__message-actions button[aria-label*="Reply" i],
+.str-chat__message-actions-box button:first-child,
+.str-chat__message-actions button:first-child,
+button[data-testid*="thread"],
+button[data-testid*="reply"] {
+  display: none !important;
+}
+  
