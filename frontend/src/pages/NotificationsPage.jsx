@@ -2,20 +2,29 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { acceptFriendRequest, getFriendRequests } from "../lib/api.js";
 import { BellIcon, ClockIcon, MessageSquareIcon, UserCheckIcon } from "lucide-react";
 import NoNotificationsFound from "../components/NoNotificationsFound";
+import { useState } from "react";
 
 const NotificationsPage = () => {
   const queryClient = useQueryClient();
+  const [pendingRequestId, setPendingRequestId] = useState(null);
 
   const { data: friendRequests, isLoading } = useQuery({
     queryKey: ["friendRequests"],
     queryFn: getFriendRequests,
   });
 
-  const { mutate: acceptRequestMutation, isPending } = useMutation({
+  const { mutate: acceptRequestMutation } = useMutation({
     mutationFn: acceptFriendRequest,
+    onMutate: (requestId) => {
+      setPendingRequestId(requestId);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["friendRequests"] });
       queryClient.invalidateQueries({ queryKey: ["friends"] });
+      setPendingRequestId(null);
+    },
+    onError: () => {
+      setPendingRequestId(null);
     },
   });
 
@@ -64,9 +73,13 @@ const NotificationsPage = () => {
                           <button
                             className="btn btn-primary btn-sm whitespace-nowrap"
                             onClick={() => acceptRequestMutation(request._id)}
-                            disabled={isPending}
+                            disabled={pendingRequestId === request._id}
                           >
-                            Accept
+                            {pendingRequestId === request._id ? (
+                              <span className="loading loading-spinner loading-sm"></span>
+                            ) : (
+                              "Accept"
+                            )}
                           </button>
                         </div>
                       </div>
