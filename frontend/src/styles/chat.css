@@ -232,7 +232,7 @@
 .str-chat__textarea__textarea {
   background: transparent !important;
   border: none !important;
-  padding: 8px 14px 8px 50px !important; /* Increase left padding for custom attachment button */
+  padding: 6px 14px 8px 50px !important; /* Increase left padding for custom attachment button */
   font-size: 14px !important;
   color: hsl(var(--bc)) !important;
   resize: none !important;
