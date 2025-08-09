@@ -2,7 +2,7 @@
 
 ![Demo App](frontend/public/home.png)
 
-Experience : optimus-chat-application.onrender.com
+Experience : [optimus-chat-application.onrender.com](https://optimus-chat-application.onrender.com/)
 
 Highlights:
 
